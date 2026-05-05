@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navya Saxena — Creative Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0f0d0b;
+    --paper: #f5f0e8;
+    --cream: #ede8dc;
+    --rust: #c94a1e;
+    --rust-light: #f0d5cc;
+    --gold: #b8892a;
+    --warm-gray: #8a8070;
+    --mid: #3d3830;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'Space Mono', monospace;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 10.5pt;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: 72mm 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── LEFT SIDEBAR ─── */
+  .sidebar {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 26px 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sidebar::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -1px;
+    width: 2px;
+    height: 100%;
+    background: var(--rust);
+  }
+
+  /* Decorative film-strip lines */
+  .filmstrip {
+    position: absolute;
+    top: 0; left: 0;
+    width: 14px;
+    height: 100%;
+    background: var(--mid);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    gap: 14px;
+    overflow: hidden;
+  }
+  .filmstrip-hole {
+    width: 7px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--paper);
+    opacity: 0.15;
+    flex-shrink: 0;
+  }
+
+  .sidebar-inner {
+    padding-left: 10px;
+  }
+
+  /* Name block */
+  .name-block {
+    margin-bottom: 28px;
+  }
+  .name-first {
+    font-family: var(--serif);
+    font-size: 34pt;
+    line-height: 1;
+    color: var(--paper);
+    letter-spacing: -0.5px;
+  }
+  .name-last {
+    font-family: var(--serif);
+    font-size: 34pt;
+    line-height: 1;
+    color: var(--rust);
+    letter-spacing: -0.5px;
+  }
+  .name-title {
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    letter-spacing: 2.5px;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* Sidebar section */
+  .s-section {
+    margin-bottom: 22px;
+  }
+  .s-label {
+    font-family: var(--mono);
+    font-size: 5.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #2e2b26;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .s-label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  /* Contact */
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 7px;
+    font-size: 8pt;
+    color: #c8c0b0;
+    line-height: 1.4;
+  }
+  .contact-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--rust);
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  /* Skills */
+  .skill-item {
+    margin-bottom: 9px;
+  }
+  .skill-name {
+    font-size: 8pt;
+    color: #c8c0b0;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .skill-bar {
+    height: 2px;
+    background: #2e2b26;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    background: var(--rust);
+    border-radius: 2px;
+  }
+
+  /* Tools */
+  .tool-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    color: var(--warm-gray);
+    border: 1px solid #2e2b26;
+    border-radius: 3px;
+    padding: 2px 6px;
+    margin: 2px 3px 2px 0;
+  }
+
+  /* Education sidebar */
+  .edu-item {
+    margin-bottom: 12px;
+  }
+  .edu-deg {
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: var(--paper);
+    line-height: 1.3;
+  }
+  .edu-school {
+    font-size: 7.5pt;
+    color: var(--rust);
+    margin: 2px 0;
+  }
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    color: var(--warm-gray);
+  }
+  .edu-note {
+    font-size: 7pt;
+    color: #7a7060;
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  /* Numbers callout */
+  .stat-block {
+    background: #1a1712;
+    border-radius: 6px;
+    padding: 14px 12px;
+    margin-bottom: 22px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 26pt;
+    color: var(--rust);
+    line-height: 1;
+  }
+  .stat-desc {
+    font-size: 7pt;
+    color: var(--warm-gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  .main {
+    padding: 48px 32px 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Headline quote */
+  .headline-quote {
+    font-family: var(--serif);
+    font-size: 12pt;
+    font-style: italic;
+    color: var(--warm-gray);
+    border-left: 3px solid var(--rust);
+    padding-left: 14px;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  /* Section headers */
+  .section {
+    margin-bottom: 24px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 16pt;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--cream);
+  }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 6pt;
+    letter-spacing: 2px;
+    color: var(--rust);
+    text-transform: uppercase;
+  }
+
+  /* Experience card */
+  .exp-card {
+    margin-bottom: 18px;
+    padding-left: 14px;
+    border-left: 2px solid var(--cream);
+    position: relative;
+  }
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rust);
+    border: 2px solid var(--paper);
+  }
+  .exp-card.current::before {
+    background: var(--gold);
+    box-shadow: 0 0 0 2px var(--gold), 0 0 0 4px #e8dec8;
+  }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2px;
+  }
+  .exp-title {
+    font-weight: 600;
+    font-size: 10pt;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    color: var(--warm-gray);
+    white-space: nowrap;
+    margin-left: 8px;
+  }
+  .exp-company {
+    font-size: 8.5pt;
+    color: var(--rust);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .exp-location {
+    font-size: 7.5pt;
+    color: var(--warm-gray);
+    font-style: italic;
+  }
+  .exp-bullets {
+    list-style: none;
+    margin-top: 6px;
+  }
+  .exp-bullets li {
+    font-size: 8.5pt;
+    color: var(--mid);
+    padding-left: 12px;
+    position: relative;
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+  .exp-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--rust);
+    font-size: 7pt;
+    top: 1px;
+  }
+
+  /* Notable works */
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .work-chip {
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 7.5pt;
+    color: var(--mid);
+    line-height: 1.35;
+  }
+  .work-views {
+    font-family: var(--mono);
+    font-size: 7pt;
+    color: var(--rust);
+    font-weight: 600;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* Profile summary */
+  .summary-text {
+    font-size: 9pt;
+    color: var(--mid);
+    line-height: 1.65;
+    max-width: 100%;
+  }
+  .summary-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Capabilities */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .cap-item {
+    background: var(--cream);
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 8pt;
+    color: var(--mid);
+    border-left: 3px solid var(--rust);
+    line-height: 1.4;
+  }
+  .cap-item strong {
+    display: block;
+    color: var(--ink);
+    font-size: 8.5pt;
+    margin-bottom: 2px;
+  }
+
+  /* CTA Buttons */
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 7px;
+    color: var(--paper);
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: var(--mono);
+    font-size: 7pt;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: filter 0.2s;
+    width: 100%;
+    justify-content: center;
+  }
+  .cta-btn:first-of-type { margin-top: 14px; }
+  .cta-btn:hover { filter: brightness(0.85); }
+  .cta-btn svg { flex-shrink: 0; }
+  .btn-portfolio { background: var(--rust); }
+  .btn-linkedin  { background: #0a66c2; }
+  .btn-whatsapp  { background: #25a244; }
+
+  /* Print styles */
+  @media print {
+    body { background: white; }
+    .page { width: 210mm; min-height: 297mm; box-shadow: none; }
+  }
+
+  @media screen {
+    body { padding: 20px; }
+    .page { box-shadow: 0 4px 40px rgba(0,0,0,0.12); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══════════ SIDEBAR ═══════════ -->
+  <aside class="sidebar">
+
+    <div class="filmstrip">
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+      <div class="filmstrip-hole"></div><div class="filmstrip-hole"></div>
+    </div>
+
+    <div class="sidebar-inner">
+
+      <div class="name-block">
+        <div class="name-first">Navya</div>
+        <div class="name-last">Saxena</div>
+        <div class="name-title">Creative&nbsp;Media&nbsp;/&nbsp;Post-Production</div>
+
+        <a href="https://drive.google.com/drive/folders/1NGLF5ibky6MUHv-58s-6eFLahmLMqIqD?usp=drive_link" target="_blank" class="cta-btn btn-portfolio">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M7 3L10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Portfolio
+        </a>
+
+        <a href="https://www.linkedin.com/in/navyasaxena/" target="_blank" class="cta-btn btn-linkedin">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.554v-5.569c0-1.328-.026-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.354V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+
+
+      </div>
+
+      <!-- Stat callout -->
+      <div class="stat-block">
+        <div class="stat-num">1B+</div>
+        <div class="stat-desc">Total Views Generated</div>
+      </div>
+
+      <!-- Contact -->
+      <div class="s-section">
+        <div class="s-label">Contact</div>
+        <div class="contact-item"><div class="contact-dot"></div>navyasaxena15@gmail.com</div>
+        <div class="contact-item"><div class="contact-dot"></div>+91 8955609298</div>
+        <div class="contact-item"><div class="contact-dot"></div>Jaipur, Rajasthan, India</div>
+
+      </div>
+
+      <!-- Core Skills -->
+      <div class="s-section">
+        <div class="s-label">Core Skills</div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Video Editing</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:96%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Cinematography & Shoot</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Motion Graphics & VFX</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Photography & Photo Edit</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Graphic Design</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Content Strategy</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Sound Design</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Team Leadership</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="s-section">
+        <div class="s-label">Tools & Software</div>
+        <div>
+          <span class="tool-tag">Premiere Pro</span>
+          <span class="tool-tag">After Effects</span>
+          <span class="tool-tag">Audition</span>
+          <span class="tool-tag">Photoshop</span>
+          <span class="tool-tag">Lightroom</span>
+          <span class="tool-tag">DaVinci</span>
+          <span class="tool-tag">Canva</span>
+          <span class="tool-tag">Illustrator</span>
+          <span class="tool-tag">CapCut</span>
+          <span class="tool-tag">Final Cut</span>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="s-section">
+        <div class="s-label">Education</div>
+        <div class="edu-item">
+          <div class="edu-deg">MBA — Business Analytics</div>
+          <div class="edu-school">Manipal University, Jaipur</div>
+          <div class="edu-year">2025 – Present</div>
+          <div class="edu-note">Minor: Marketing</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">BCA — Computer Applications</div>
+          <div class="edu-school">Vivekananda Global University</div>
+          <div class="edu-year">2021 – 2024</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">Higher Secondary</div>
+          <div class="edu-school">MPS International School, Jaipur</div>
+          <div class="edu-year">Completed</div>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ═══════════ MAIN ═══════════ -->
+  <main class="main">
+
+    <div class="headline-quote">
+      I don't just edit footage — I shape stories, build worlds, and make audiences feel something they didn't expect to feel.
+    </div>
+
+    <!-- Profile -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Profile</div>
+        <div class="section-line"></div>
+        <div class="section-tag">01</div>
+      </div>
+      <p class="summary-text">
+        Creative media professional with <strong>4+ years</strong> of hands-on experience across <strong>video production, photography, post-production, and graphic design</strong>. Known for leading projects end-to-end — from pre-production planning and on-set shoot coordination to final cut delivery — with a sharp eye for storytelling, pacing, and visual language.
+        <br><br>
+        Produced and edited content that has collectively generated <strong>over 1 billion views</strong> for India's top digital creators. Experienced in managing production teams, coordinating shoots, and delivering content under tight timelines. Currently pursuing an <strong>MBA in Business Analytics</strong> (Minor: Marketing) to bring strategic thinking to every creative decision.
+      </p>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Experience</div>
+        <div class="section-line"></div>
+        <div class="section-tag">02</div>
+      </div>
+
+      <!-- Freelance -->
+      <div class="exp-card current">
+        <div class="exp-header">
+          <div class="exp-title">Freelance Creative — Video, Photography & Design</div>
+          <div class="exp-period">Aug 2025 – Present</div>
+        </div>
+        <div class="exp-company">Independent <span class="exp-location">| Jaipur, India</span></div>
+        <ul class="exp-bullets">
+          <li>Providing end-to-end production services — videography, photography, video editing, and graphic design — across commercial, brand, and personal projects.</li>
+          <li>Planning and executing video and photo shoots independently including location scouting, lighting setup, and directing subjects on set.</li>
+          <li>Delivering high-quality post-production: color grading, motion graphics, retouching, and branded graphic assets.</li>
+          <li>Managing full creative pipeline from brief to delivery across multiple concurrent client projects.</li>
+        </ul>
+      </div>
+
+      <!-- Tech Burner -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-title">Senior Video Editor & Content Producer</div>
+          <div class="exp-period">Jan 2024 – Aug 2025</div>
+        </div>
+        <div class="exp-company">Burner Digital — Tech Burner <span class="exp-location">| Remote, Bengaluru</span></div>
+        <ul class="exp-bullets">
+          <li>Led post-production for one of India's top tech YouTube channels, generating <strong>1B+ total views</strong> across YouTube Shorts and long-form content.</li>
+          <li>Collaborated with creative directors, coordinated with on-set teams during video and product shoot days, and managed post-production workflow from raw footage to final export.</li>
+          <li>Drove content strategy through data analysis of retention curves, engagement rates, and audience behavior to inform creative decisions.</li>
+          <li>Applied dynamic pacing, cinematic transitions, and sound design to consistently achieve 10M+ views per video.</li>
+        </ul>
+      </div>
+
+      <!-- fieldReady -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-title">Post-Production Lead & Shoot Coordinator</div>
+          <div class="exp-period">Aug 2022 – Aug 2025</div>
+        </div>
+        <div class="exp-company">fieldReady <span class="exp-location">| Jaipur, India</span></div>
+        <ul class="exp-bullets">
+          <li>Led end-to-end production of brand and educational videos — from shoot planning, crew coordination, and on-location videography to final post-production delivery.</li>
+          <li>Managed team workflows, assigned editing tasks, and maintained quality control across all deliverables.</li>
+          <li>Oversaw photo and video shoot logistics including equipment setup, shot planning, and talent direction.</li>
+          <li>Ensured visual consistency, brand alignment, and high audio-visual quality across all platform outputs.</li>
+        </ul>
+      </div>
+
+      <!-- Brightsoo -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-title">Community & Content Manager</div>
+          <div class="exp-period">Dec 2023 – Feb 2024</div>
+        </div>
+        <div class="exp-company">Brightsoo <span class="exp-location">| Remote</span></div>
+        <ul class="exp-bullets">
+          <li>Managed content distribution, brand communication, and audience engagement across digital platforms.</li>
+          <li>Created interactive storytelling initiatives that improved community participation and brand reach.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Notable Works -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Notable Works</div>
+        <div class="section-line"></div>
+        <div class="section-tag">03</div>
+      </div>
+      <div class="works-grid">
+        <div class="work-chip">World's Most Expensive &amp; Cheapest Car<span class="work-views">31M+ Views</span></div>
+        <div class="work-chip">₹20K vs ₹1.5 Lakh Earphones<span class="work-views">18M+ Views</span></div>
+        <div class="work-chip">₹5 vs ₹2000 Sharpener<span class="work-views">16M+ Views</span></div>
+        <div class="work-chip">I Spent ₹5 Lakhs to Live 100 Years<span class="work-views">14.9M+ Views</span></div>
+        <div class="work-chip">Indian Election Tech<span class="work-views">14.8M+ Views</span></div>
+        <div class="work-chip">+ 50 more viral videos<span class="work-views">1B+ Combined</span></div>
+      </div>
+    </div>
+
+    <!-- Capabilities -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Capabilities</div>
+        <div class="section-line"></div>
+        <div class="section-tag">04</div>
+      </div>
+      <div class="cap-grid">
+        <div class="cap-item"><strong>Production & Direction</strong>Shoot planning, on-set coordination, talent direction, location scouting, lighting & camera operation</div>
+        <div class="cap-item"><strong>Post-Production</strong>Video editing, color grading, VFX, motion graphics, sound design, audio mixing</div>
+        <div class="cap-item"><strong>Photography</strong>Product, portrait & event photography; photo retouching, Lightroom editing, brand imagery</div>
+        <div class="cap-item"><strong>Graphic Design</strong>Brand identity, social media graphics, thumbnails, motion design, visual storytelling</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>
